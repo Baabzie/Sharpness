@@ -15,4 +15,16 @@ nav ul {
   display: flex;
   justify-content: center;
   gap: 12px;
+}
+
+#diagramDiv {
+  max-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+#diagramDiv div canvas {
+  min-width: 800px;
+  min-height: 500px;
 }/*# sourceMappingURL=App.css.map */

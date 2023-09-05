@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import JSONData from "../assets/frontend-data-set.json"
 import LineDiagram from "../components/LineDiagram";
+import BarDiagram from "../components/BarDiagram";
 import GameCheck from "../components/GameCheck";
 
 export function Problem2() {
@@ -12,6 +13,7 @@ export function Problem2() {
     //Creating an array with names of the games we have data for. Using "Set" to remove duplicates.
     const games = [...new Set(gameDataArray.map((data) => data.game))]
 
+    //Function that in turn runs "setUserData" and sets that data to the games we want to show in the diagrams.
     //NOTE TO SELF: Try to make function work even if some games would miss data on dates. For instance data exist from an earlier date of one game than the other (probably seperate dates into other separate function).
     const activeGames = (games) => {
         let datasets = [];
@@ -36,6 +38,7 @@ export function Problem2() {
         })
     }
 
+    //This function is runned evertime someone changes one of the checkboxes.
     const checkboxChange = () => {
         let checkboxArray = [];
         let form = document.getElementById("gamesCheckboxForm");
@@ -49,14 +52,21 @@ export function Problem2() {
         activeGames(checkboxArray);
     }
 
-    // useEffect(() => {
-    //     activeGames(games);
-    // }, [])
 
+    // When we enter the page "Problem 2" we will run "checkboxChange()" to get our diagram. By default every game is checked.
+    //NOTE TO SELF: Having an error as the hook is empty. Want to run this ones when page is loaded (works) but should fix the error.
+    useEffect(() => {
+        checkboxChange();
+    }, [])
+
+
+    //The data of the games that the diagrams should show.
     const [userData, setUserData] = useState({
          labels: [],
          datasets: [],
-     })
+     });
+
+    const [showBarDiagram, setShowBarDiagram] = useState(false);
 
     return (
         <div>
@@ -67,7 +77,10 @@ export function Problem2() {
                     return <GameCheck game={game} key={i} checkboxChange={checkboxChange}/>
                 })}
             </form>
-            <LineDiagram lineData={userData}/>
+            <div id="diagramDiv">
+            {!showBarDiagram ? <LineDiagram lineData={userData}/> : <BarDiagram barData={userData}/>}
+            </div>
+            <button onClick={() => {setShowBarDiagram((prevState) => !prevState)}}>{!showBarDiagram ? "Show Bar Diagram" : "Show Line Diagram"}</button>
         </div>
     )
 }

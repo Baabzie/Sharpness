@@ -20,3 +20,17 @@ nav {
         gap: 12px
     }
 }
+
+#diagramDiv {
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    div {
+        canvas {
+            min-width: 800px;
+            min-height: 500px;
+        }
+    }
+}
