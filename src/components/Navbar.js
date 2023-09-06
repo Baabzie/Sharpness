@@ -13,6 +13,9 @@ export default function Navbar() {
                 <li>
                     <Link to="/problem2">Problem 2</Link>
                 </li>
+                <li>
+                    <Link to="/problem3">Problem 3</Link>
+                </li>
             </ul>
         </nav>
     )
