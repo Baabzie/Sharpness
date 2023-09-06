@@ -34,9 +34,35 @@ nav {
         }
     }
 }
-
-#radioDiv {
+#puppySettingsDiv {
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 24px;
+    align-items: center;
+    #puppyRadioDiv {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+}
+
+#puppyImageDiv {
+    max-width: 1400px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    div {
+        margin: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        img {
+            max-height: 300px;
+            max-width: 200px;
+            border-radius: 4px;
+        }
+
+        max-width: 200px;
+    }
 }

@@ -29,8 +29,34 @@ nav ul {
   min-height: 500px;
 }
 
-#radioDiv {
+#puppySettingsDiv {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  align-items: center;
+}
+#puppySettingsDiv #puppyRadioDiv {
   display: flex;
   justify-content: center;
   gap: 12px;
+  margin-bottom: 24px;
+}
+
+#puppyImageDiv {
+  max-width: 1400px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+#puppyImageDiv div {
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 200px;
+}
+#puppyImageDiv div img {
+  max-height: 300px;
+  max-width: 200px;
+  border-radius: 4px;
 }/*# sourceMappingURL=App.css.map */
