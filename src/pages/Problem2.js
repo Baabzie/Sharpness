@@ -24,28 +24,37 @@ export function Problem2() {
 
     //Function that in turn runs "setUserData" and sets that data to the games we want to show in the diagrams. The function is itself runned in the "checkboxChange()" function.
     const activeGames = (games) => {
+        //Array which will contain one object for every game and relevant data. 
         let datasets = [];
+        //Array that will contain all the dates. Later used to create a new array where we delete duplicates.
         let newDates = [];
+        //For each game we create an object. We have one key that is the label (name) of our game and then a key that is an array with objects filled with data for that game.
         games.forEach((game) => {
             let object = {
                 label: game,
                 data: [],
             }
             gameDataArray.forEach((datapoint, i) => {
-                //Only runns if the data is from a game which checkbox is checked and only if the data is from within the timespan of selected dates.
+                //Only runns if the data is from the relevent game and only if the data is from within the timespan of selected dates.
                 if (datapoint.game === game && (datapoint.date >= document.getElementById("beginningDateInput").value) && (datapoint.date <= document.getElementById("endingDateInput").value)) {
+                    // Object that contains the relevent data for one data point.
                     let pointObject = {
                         x: datapoint.date,
                         y: datapoint.activeUsers,
                         }
                     object.data.push(pointObject)
+                    // Pushing date to an "newDates" array.
                     newDates.push(datapoint.date)
                 }
             })
+            //One game with all relevant data is pushed into the datasets array.
             datasets.push(object)
         })
+        // Makes a new array with "Set" to delete duplicates.
         let dates = [...new Set(newDates)];
+        // Sorting the array with dates.
         dates.sort();
+        // The relevant data (dates and all game selected) is places in the state "userData".
         setUserData({
             labels: dates,
             datasets,
