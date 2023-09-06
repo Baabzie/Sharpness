@@ -29,7 +29,6 @@ export function Problem3() {
         try {
             let response = await fetch(`https://api.unsplash.com/search/photos?page=${activePage}&query=${activeColor}dog-puppies&client_id=${process.env.REACT_APP_ACCESS_KEY}`);
             let data = await response.json();
-            console.log(data)
             setTotalPage(data.total_pages);
             handleData(data.results);
             setErrorTrue(false)
@@ -54,7 +53,6 @@ export function Problem3() {
             array.push(object);
         })
         setImageArray(array);
-        console.log(totalPage, activePage)
     }
 
 

@@ -43,7 +43,6 @@ export function Problem2() {
                 }
             })
             datasets.push(object)
-            console.log(object)
         })
         let dates = [...new Set(newDates)];
         dates.sort();
