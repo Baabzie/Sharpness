@@ -34,7 +34,9 @@ I don't know how to do a unit test and haven't had time to figure it out yet.
 
 ### Problem 2
 
-I have created an alternative JSON-file with more data (made up) for more games to check how my functions would work with more dynamic data. If you want to try it there is notes on how at the top of the "Problem2.js" file. 
+I have created an alternative JSON-file with more data (made up) for more games to check how my functions would work with more dynamic data. If you want to try it there is notes on how at the top of the "Problem2.js" file.
+
+This is probably where my code can be a little bit hard to follow so I made a lot of notes. I made some last minute changes to make the functions work with more dynamic data and the code could probably be optimized.
 
 #### Limitations
 
