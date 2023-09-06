@@ -1,5 +1,6 @@
 import Navbar from "./Navbar"
 
+//Creates a very simple header for our site.
 export default function Header() {
     return (
         <header>

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+//Creates a navbar for our diffrent pages.
 export default function Navbar() {
     return (
         <nav>
