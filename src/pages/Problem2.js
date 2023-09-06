@@ -9,18 +9,34 @@ import GameCheck from "../components/GameCheck";
 
 export function Problem2() {
 
+    //A state with the data of the games that the diagrams should show. The "setUserData" is runned from "activeGames".
+    const [userData, setUserData] = useState({
+        labels: [],
+        datasets: [],
+    });
+    
+    //State that by default is "false", if "true" a bar chart is showned instead of the line chart. Is changed by a button rendered at the end of the HTML bellow.
+    const [showBarDiagram, setShowBarDiagram] = useState(false);
+    
     // Making a new array from the JSON-file Sharpness provided me with.
     // NOTE TO SELF: Why don't I have to convert it? Tought I would as it's a JSON-file but seems to be working. 
     let gameDataArray = [...JSONData]
-
+    
     //Creating an array with names of the games we have data for. Using "Set" to remove duplicates.
     const games = [...new Set(gameDataArray.map((data) => data.game))]
-
+    
     //Creating an array with all the dates we have some data on. Using "Set" to remove duplicates.
     const availableDates = [...new Set(gameDataArray.map((data) => data.date))]
     //Crating variables for the first and the last date available.
     const minDate = availableDates[0];
     const maxDate = availableDates[availableDates.length - 1]
+    
+    // When we enter the page "Problem 2" we will run "checkboxChange()" to get our diagram. By default every game is checked.
+    //NOTE TO SELF: Having an error as the hook is empty. Want to run this ones when page is loaded (works) but should fix the error.
+    useEffect(() => {
+        checkboxChange();
+    }, [])
+
 
     //Function that in turn runs "setUserData" and sets that data to the games we want to show in the diagrams. The function is itself runned in the "checkboxChange()" function.
     const activeGames = (games) => {
@@ -75,24 +91,6 @@ export function Problem2() {
         //Runnes function with the selected games.
         activeGames(checkboxArray);
     }
-
-
-    // When we enter the page "Problem 2" we will run "checkboxChange()" to get our diagram. By default every game is checked.
-    //NOTE TO SELF: Having an error as the hook is empty. Want to run this ones when page is loaded (works) but should fix the error.
-    useEffect(() => {
-        checkboxChange();
-    }, [])
-
-
-    //A state with the data of the games that the diagrams should show. The "setUserData" is runned from "activeGames".
-    const [userData, setUserData] = useState({
-         labels: [],
-         datasets: [],
-     });
-
-
-    //State that by default is "false", if "true" a bar chart is showned instead of the line chart. Is changed by a button rendered at the end of the HTML bellow.
-    const [showBarDiagram, setShowBarDiagram] = useState(false);
 
     return (
         <div>

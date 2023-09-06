@@ -3,22 +3,30 @@ import PuppyRadio from "../components/PuppyRadio";
 import PuppyImage from "../components/PuppyImage";
 
 export function Problem3() {
-
-    //Array of all the colors of puppies we want to search for, and "All" as an option.
-    const colorArray= ["All", "Brown", "White", "Red", "Yellow"];
-
+    
     // What color that is selected, at start of page it is set to "All" but can be changed by radio-buttons.
     let [activeRadio, setActiveRadio] = useState("All");
-
+    
     // What page of images are we fetching. At start of first page load it will be "1", it will change with the "prev"- and "next"-buttons and it will also revert back to "1" if we change color with the radio-buttons.
     let [activePage, setActivePage] = useState(1);
     
     // How many pages there is to fetch with the current search params. It's updated by the respone of the API. Mostly to know if there is a previous or next page from the current (activePage) we are viewing.
     let [totalPage, setTotalPage] = useState(0);
-
+    
     // Just a state to show a error-paragraph if the API-fetch don't succeed. 
     let [errorTrue, setErrorTrue] = useState(false);
-
+    
+    // Array of the pictures being showed on the page. Changes by "handleData()" that itself is runned by getData();
+    let [imageArray, setImageArray] = useState([]);
+    
+    //Array of all the colors of puppies we want to search for, and "All" as an option.
+    const colorArray= ["All", "Brown", "White", "Red", "Yellow"];
+    
+    // Runs everytime teh first page is loaded, radio-buttons (colors) are changed or if we change (prev, next) what page we are on. This is when we want to fetch new data from the API.
+    useEffect(() => {
+        getData()
+    }, [activeRadio, activePage])
+    
     // Function to fetch data.
     const getData = async () => {
         let activeColor = ``;
@@ -38,10 +46,6 @@ export function Problem3() {
         }
     }
     
-    // Array of the pictures being showed on the page. Changes by "handleData()" that itself is runned by getData();
-    let [imageArray, setImageArray] = useState([]);
-
-
     // A function that creates objects with the images (and alt description) we got from "getData()" to put in a array and then replace the array "imageArray". 
     const handleData = (results) => {
         let array = [];
@@ -54,12 +58,6 @@ export function Problem3() {
         })
         setImageArray(array);
     }
-
-
-    // Runs everytime teh first page is loaded, radio-buttons (colors) are changed or if we change (prev, next) what page we are on. This is when we want to fetch new data from the API.
-    useEffect(() => {
-        getData()
-    }, [activeRadio, activePage])
 
     return (
         <div>
