@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+
+// If you want to see the functions being more dynamic, replace the path under to "../assets/frontend-data-set.alternative.json" (I just added some more games with overlapping, earlier, later and missing dates to test my funcions.)
 import JSONData from "../assets/frontend-data-set.json"
 import LineDiagram from "../components/LineDiagram";
 import BarDiagram from "../components/BarDiagram";
@@ -20,7 +22,6 @@ export function Problem2() {
     const maxDate = availableDates[availableDates.length - 1]
 
     //Function that in turn runs "setUserData" and sets that data to the games we want to show in the diagrams. The function is itself runned in the "checkboxChange()" function.
-    //NOTE TO SELF: Try to make function work even if some games would miss data on dates. For instance data exist from an earlier date of one game than the other (probably seperate dates into other separate function).
     const activeGames = (games) => {
         let datasets = [];
         let newDates = [];
@@ -32,13 +33,19 @@ export function Problem2() {
             gameDataArray.forEach((datapoint, i) => {
                 //Only runns if the data is from a game which checkbox is checked and only if the data is from within the timespan of selected dates.
                 if (datapoint.game === game && (datapoint.date >= document.getElementById("beginningDateInput").value) && (datapoint.date <= document.getElementById("endingDateInput").value)) {
-                    object.data.push(datapoint.activeUsers)
+                    let pointObject = {
+                        x: datapoint.date,
+                        y: datapoint.activeUsers,
+                        }
+                    object.data.push(pointObject)
                     newDates.push(datapoint.date)
                 }
             })
             datasets.push(object)
+            console.log(object)
         })
         let dates = [...new Set(newDates)];
+        dates.sort();
         setUserData({
             labels: dates,
             datasets,
