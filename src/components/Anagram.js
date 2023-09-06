@@ -30,7 +30,6 @@ export default function Anagram() {
             setOutputMessage(`${word1} and ${word2} are NOT anagrams!`)
         }
     }
-
     return (
         <div>
             <p>Please enter two words to check if they are anagrams.</p>

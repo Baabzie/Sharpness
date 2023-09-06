@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 // If you want to see the functions being more dynamic, replace the path under to "../assets/frontend-data-set.alternative.json" (I just added some more games with overlapping, earlier, later and missing dates to test my funcions.)
 import JSONData from "../assets/frontend-data-set.json"
+
 import LineDiagram from "../components/LineDiagram";
 import BarDiagram from "../components/BarDiagram";
 import GameCheck from "../components/GameCheck";
