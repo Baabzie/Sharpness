@@ -33,14 +33,14 @@ export default function Anagram() {
     return (
         <div>
             <p>Please enter two words to check if they are anagrams.</p>
-            <input type="text" id="wordInput1" aria-label="Text input for the first word." placeholder="Word 1"/>
-            <input type="text" id="wordInput2" aria-label="Text input for the second word." placeholder="Word 2"/>
-            <button onClick={() => {
+            <input type="text" id="wordInput1" aria-label="Text input for the first word." placeholder="Word 1" data-testid="wordInput1"/>
+            <input type="text" id="wordInput2" aria-label="Text input for the second word." placeholder="Word 2" data-testid="wordInput2"/>
+            <button data-testid="anagramBtn" onClick={() => {
                 let word1 = document.getElementById("wordInput1").value;
                 let word2 = document.getElementById("wordInput2").value;
                 checkAnagram(word1, word2);
             }}>Check</button>
-            <p>{outputMessage}</p>
+            <p data-testid="outputMessage">{outputMessage}</p>
         </div>
     )
 }

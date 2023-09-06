@@ -18,6 +18,10 @@ REACT_APP_ACCESS_KEY=ABCDEFG
 
 Run "npm start" to start the app in the browser.
 
+## Test
+
+Run "npm run test" to run the unit test for Problem 1.
+
 ## Notes
 
 ### In General
@@ -25,12 +29,6 @@ Run "npm start" to start the app in the browser.
 As I am applying for an internship as a Frontend Developer I have skipped "Problem 4" and instead put all my energy in to Problem 1-3.
 
 I decided to use React for this project. I am very new to using React but really like it this far so that is why. As I am a beginner there might be some (or a lot xD) of "not best practice" senarios because of it but I hope not.  
-
-### Probelm 1
-
-#### Unit Tests
-
-I don't know how to do a unit test and haven't had time to figure it out yet. 
 
 ### Problem 2
 
